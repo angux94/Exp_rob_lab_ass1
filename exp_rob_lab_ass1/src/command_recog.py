@@ -11,20 +11,34 @@ from geometry_msgs.msg import Point
 import numpy as np
 import matplotlib.pyplot as plt
 
+"""Main code for command recognition
 
+Waits for the user to input a command for the program
+
+subscribe: None
+publish: /command (std_msgs.String)
+
+Valid comands: Play, PLAY, play
+"""
 def main():
+
 	rospy.init_node('Command_recognition')
-	pub = rospy.Publisher('Command', String, queue_size=10)
+
+	# Publishers and subscribers
+	pub = rospy.Publisher('command', String, queue_size=10)
 	
 	rate = rospy.Rate(10) # 10hz
 
 	while not rospy.is_shutdown():
 
-		txt = raw_input("Write PLAY to commmand: ")
+		# Get command from user
+		txt = raw_input("Write (PLAY, play or Play) to commmand: ")
 		if(txt == "Play" or txt == "play" or txt == "PLAY"):
 			print("Valid command")
 			txt = "play"
 			pub.publish(txt)
+
+		# Code for invalid comand and retry
 		else:
 			print("Your command '" + txt + "' is not valid.")
 			print("Please write a valid command")
