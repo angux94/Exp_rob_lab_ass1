@@ -51,10 +51,10 @@ The parameter are to be specified just on the sm_assignment file:
 Packages and File list
 ------------
 
-Nodes:
+-Nodes:
 All the executable files are in /exp_rob_lab_ass1/src folder which are the .py files for each node.
 
-The documentation can be found in the folder : /docs
+-The documentation can be found in the folder : /docs
 Where in /builds/html can be found the html links for each of the nodes documentation.
 
 Intstallation and Running Procedure
@@ -63,22 +63,22 @@ Intstallation and Running Procedure
 As for visualization purposes, the project does not contain a launch file, as we need multiple tabs to interact with the nodes.
 By downloading the provided ROS package, you can run each of the nodes on 4 terminals.
 
-For the command_recog node:
+-For the command_recog node:
   rosrun exp_rob_lab_ass1 command_recog.py
 
   Will run the code and waits for a valid command.
 
-For the gesture_recog node:
+-For the gesture_recog node:
   rosrun exp_rob_lab_ass1 geture_recog.py
   
   Will wait to display the grid when the command is entered.
 
-For the movement_control node:
+-For the movement_control node:
   rosrun exp_rob_lab_ass1 movement_control.py
   
   Will wait to receive a coordinate and tell when it arrives and to which corrdinates.
   
-For the sm_assignment node:
+-For the sm_assignment node:
   rosrun exp_rob_lab_ass1 sm_assignment.py
   
   Will run the state machine, in this we can specify the parameters of the system like:
