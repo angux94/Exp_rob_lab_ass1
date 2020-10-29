@@ -13,6 +13,10 @@ from geometry_msgs.msg import Point
 class Normal(smach.State):
     """ Class for the NORMAL state
 
+    Robot walks randomly for a random amount of times.
+    If "play" command is received, goes to PLAY state.
+    If no command is received, goes to sleep.
+
     Attributes
     ----------
     normal_counter: int
@@ -106,6 +110,8 @@ class Normal(smach.State):
 class Sleep(smach.State):
     """ Class for the SLEEP state
 
+    The robot goes to the sleep coordinate, stays there for a while, then wakes up and goes to NORMAL state
+
     Attributes
     ----------
     pub: publisher (geometry_msgs.Point) to /move_coords
@@ -147,6 +153,10 @@ class Sleep(smach.State):
 # define state PLAY
 class Play(smach.State):
     """ Class for the PLAY state
+
+    Robot plays for a random amount of times.
+    Each time goes towards the man and waits for a gesture, then goes towards the indicated coords and repeats.
+    When it finishes playing goes to NORMAL state.
 
     Attributes
     ----------
@@ -240,7 +250,11 @@ def cb_flag(data):
 
 # main
 def main():
+    ''' State machine initialization
 
+    Creates the state machine, add states and link their outputs.
+
+    '''
     global sm_command, sm_flag
 
     rospy.init_node('sm_assignment')
