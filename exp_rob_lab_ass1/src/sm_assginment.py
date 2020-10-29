@@ -53,8 +53,8 @@ class Normal(smach.State):
         
         # If not, proceed to randomly walk
         else:
-            # Random amount of walks before sleeping
-            normal_times = random.randrange(1,5)
+            # Amount of random walks before sleeping
+            normal_times = rospy.get_param('~normal_times',random.randrange(1,5))
 
             x = random.randrange(0,1000)
             y = random.randrange(0,1000)
@@ -112,6 +112,12 @@ class Sleep(smach.State):
 
     The robot goes to the sleep coordinate, stays there for a while, then wakes up and goes to NORMAL state
 
+    Parameters
+    ----------
+    sleep_x: (int) Sleep x coordinate (0-1000)
+    sleep_y: (int) Sleep y coordinate (0-1000)
+    time_sleep: (int) Sleeping time (1-10)
+
     Attributes
     ----------
     pub: publisher (geometry_msgs.Point) to /move_coords
@@ -131,8 +137,10 @@ class Sleep(smach.State):
         global sm_flag
 
         # Coordinates of the sleep position
-        sleep_x = 900
-        sleep_y = 100
+        sleep_x = rospy.get_param('~sleep_x', 900)
+        sleep_y = rospy.get_param('~sleep_y', 100)
+        time_sleep = rospy.get_param('~time_sleep', 10)
+
         sleep_coord = Point(x = sleep_x, y = sleep_y)
 
         # Go to sleep position
@@ -144,7 +152,7 @@ class Sleep(smach.State):
             # When arrived, sleep for a fixed time and then continue to NORMAL state
             if(sm_flag):
                 print("Robot arrived to sleep")
-                time.sleep(10)
+                time.sleep(time_sleep)
                 print("Robot woken")
                 return 'wait'
         
@@ -157,6 +165,13 @@ class Play(smach.State):
     Robot plays for a random amount of times.
     Each time goes towards the man and waits for a gesture, then goes towards the indicated coords and repeats.
     When it finishes playing goes to NORMAL state.
+
+    Parameters
+    ----------
+    man_x: (int) Man x coordinate (0-1000)
+    man_y: (int) Man y coordinate (0-1000)
+    play_times: (int) Amount of times to play (1-5)
+
 
     Attributes
     ----------
@@ -180,15 +195,17 @@ class Play(smach.State):
         time.sleep(1)
         rospy.loginfo('Executing state PLAY')
 
-        # Random amount of times for the dog to play
-        play_times = random.randrange(1,5)
-
         global sm_flag
 
         # Coordinates of the man position
-        man_x = 400
-        man_y = 600
+
+        man_x = rospy.get_param('~man_x', 400)
+        man_y = rospy.get_param('~man_y', 600)
+
         man_coord = Point(x = man_x, y = man_y)
+
+        # Amount of times for the dog to play
+        play_times = rospy.get_param('~play_times',random.randrange(1,5))
 
         # Turn the arrive flag off
         sm_flag = False

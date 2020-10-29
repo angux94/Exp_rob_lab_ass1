@@ -12,14 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-"""Main code for gesture recognition
 
-After receiving the "play" command, displays a 1000x1000 grid as the workspace to select a play destination.
-Publishes the selected coordinates
-
-subscribe: /gesture_request (std_msgs.String)
-publish: /move_coords (geometry_msgs.Point)
-"""
 
 # Global variables
 cb_msg = None
@@ -56,7 +49,14 @@ def callback(data):
 
 def main():
 	
+	"""Main code for gesture recognition
 
+	After receiving the "play" command, displays a 1000x1000 grid as the workspace to select a play destination.
+	Publishes the selected coordinates
+
+	subscribe: /gesture_request (std_msgs.String)
+	publish: /move_coords (geometry_msgs.Point)
+	"""
 	rospy.init_node('Gesture_recognition')
 
 	# Publishers and Subscribers

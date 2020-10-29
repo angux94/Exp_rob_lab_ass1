@@ -12,14 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-"""Main code for movement control
 
-Receives some geometry_msgs.Point coordinates and takes a time to arrive to the destination.
-Sends back a signal to inform the arrival.
-
-subscribe: /move_coords (geometry_msgs.Point)
-publish: /arrived (std_msgs.Bool)
-"""
 
 # Global variables
 cb_point = None
@@ -32,7 +25,14 @@ def callback(data):
 
 # main
 def main():
+	"""Main code for movement control
 
+	Receives some geometry_msgs.Point coordinates and takes a time to arrive to the destination.
+	Sends back a signal to inform the arrival.
+
+	subscribe: /move_coords (geometry_msgs.Point)
+	publish: /arrived (std_msgs.Bool)
+	"""
 	rospy.init_node('Movement_control')
 
 	# Publishers and Subscribers

@@ -1,0 +1,166 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>sm_assginment module &#8212; Experimental Robotics Lab Assignment 1  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="movement_control module" href="movement_control.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-sm_assginment">
+<span id="sm-assginment-module"></span><h1>sm_assginment module<a class="headerlink" href="#module-sm_assginment" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sm_assginment.Normal">
+<em class="property">class </em><code class="descclassname">sm_assginment.</code><code class="descname">Normal</code><a class="headerlink" href="#sm_assginment.Normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">smach.state.State</span></code></p>
+<p>Class for the NORMAL state</p>
+<p>Robot walks randomly for a random amount of times.
+If “play” command is received, goes to PLAY state.
+If no command is received, goes to sleep.</p>
+<p>normal_counter: int
+pub: publisher (geometry_msgs.Point) to /move_coords
+sub_command: subscriber (std_msgs.String) to /command
+sub_flag: subscriber (std_msgs.Bool) to /arrived</p>
+<dl class="method">
+<dt id="sm_assginment.Normal.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>userdata</em><span class="sig-paren">)</span><a class="headerlink" href="#sm_assginment.Normal.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sm_assginment.Play">
+<em class="property">class </em><code class="descclassname">sm_assginment.</code><code class="descname">Play</code><a class="headerlink" href="#sm_assginment.Play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">smach.state.State</span></code></p>
+<p>Class for the PLAY state</p>
+<p>Robot plays for a random amount of times.
+Each time goes towards the man and waits for a gesture, then goes towards the indicated coords and repeats.
+When it finishes playing goes to NORMAL state.</p>
+<p>man_x: (int) Man x coordinate (0-1000)
+man_y: (int) Man y coordinate (0-1000)
+play_times: (int) Amount of times to play (1-5)</p>
+<p>play_counter: int
+pub_command: publisher (std_msgs.String) to /gesture_request
+pub_coords: publisher (geometry_msgs.Point) to /move_coords
+sub_flag: subscriber (std_msgs.Bool) to /arrived</p>
+<dl class="method">
+<dt id="sm_assginment.Play.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>userdata</em><span class="sig-paren">)</span><a class="headerlink" href="#sm_assginment.Play.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sm_assginment.Sleep">
+<em class="property">class </em><code class="descclassname">sm_assginment.</code><code class="descname">Sleep</code><a class="headerlink" href="#sm_assginment.Sleep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">smach.state.State</span></code></p>
+<p>Class for the SLEEP state</p>
+<p>The robot goes to the sleep coordinate, stays there for a while, then wakes up and goes to NORMAL state</p>
+<p>sleep_x: (int) Sleep x coordinate (0-1000)
+sleep_y: (int) Sleep y coordinate (0-1000)
+time_sleep: (int) Sleeping time (1-10)</p>
+<p>pub: publisher (geometry_msgs.Point) to /move_coords
+sub_flag: subscriber (std_msgs.Bool) to /arrived</p>
+<dl class="method">
+<dt id="sm_assginment.Sleep.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>userdata</em><span class="sig-paren">)</span><a class="headerlink" href="#sm_assginment.Sleep.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="sm_assginment.cb_command">
+<code class="descclassname">sm_assginment.</code><code class="descname">cb_command</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sm_assginment.cb_command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sm_assginment.cb_flag">
+<code class="descclassname">sm_assginment.</code><code class="descname">cb_flag</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sm_assginment.cb_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sm_assginment.main">
+<code class="descclassname">sm_assginment.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sm_assginment.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>State machine initialization</p>
+<p>Creates the state machine, add states and link their outputs.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="movement_control.html" title="previous chapter">movement_control module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Andres Gutierrez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/sm_assginment.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

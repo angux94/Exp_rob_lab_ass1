@@ -11,17 +11,17 @@ from geometry_msgs.msg import Point
 import numpy as np
 import matplotlib.pyplot as plt
 
-"""Main code for command recognition
 
-Waits for the user to input a command for the program
-
-subscribe: None
-publish: /command (std_msgs.String)
-
-Valid comands: Play, PLAY, play
-"""
 def main():
+	"""Main code for command recognition
 
+	Waits for the user to input a command for the program
+
+	subscribe: None
+	publish: /command (std_msgs.String)
+
+	Valid comands: Play, PLAY, play
+	"""
 	rospy.init_node('Command_recognition')
 
 	# Publishers and subscribers

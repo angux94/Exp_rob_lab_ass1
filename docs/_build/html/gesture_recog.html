@@ -1,0 +1,117 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gesture_recog module &#8212; Experimental Robotics Lab Assignment 1  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="movement_control module" href="movement_control.html" />
+    <link rel="prev" title="command_recog module" href="command_recog.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-gesture_recog">
+<span id="gesture-recog-module"></span><h1>gesture_recog module<a class="headerlink" href="#module-gesture_recog" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="gesture_recog.callback">
+<code class="descclassname">gesture_recog.</code><code class="descname">callback</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#gesture_recog.callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gesture_recog.coord_select">
+<code class="descclassname">gesture_recog.</code><code class="descname">coord_select</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture_recog.coord_select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to display a grid and select the destination point</p>
+<dl class="docutils">
+<dt>xy</dt>
+<dd>X and Y coordinates of the point selected</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gesture_recog.main">
+<code class="descclassname">gesture_recog.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture_recog.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main code for gesture recognition</p>
+<p>After receiving the “play” command, displays a 1000x1000 grid as the workspace to select a play destination.
+Publishes the selected coordinates</p>
+<p>subscribe: /gesture_request (std_msgs.String)
+publish: /move_coords (geometry_msgs.Point)</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="command_recog.html" title="previous chapter">command_recog module</a></li>
+      <li>Next: <a href="movement_control.html" title="next chapter">movement_control module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Andres Gutierrez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/gesture_recog.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
