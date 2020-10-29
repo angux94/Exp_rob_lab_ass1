@@ -15,38 +15,38 @@ For the software architecture:
 ![] (https://github.com/angux94/Exp_rob_lab_ass1/blob/main/Architecture_ass1.png)
 
 As seen on the image, the architecture of the program has 4 nodes.
-  command_recog: Waits for the user to input the "play" command.
-  gesture_recog: Once the play command has been introduced, displays a 1000x1000 grid to select the play location.
-  movement_control: Controls the robot movement and tells us whe it arrives to the destination.
-  sm_assignment: The state machine of the system which control what the robot does.
+  - command_recog: Waits for the user to input the "play" command.
+  - gesture_recog: Once the play command has been introduced, displays a 1000x1000 grid to select the play location.
+  - movement_control: Controls the robot movement and tells us whe it arrives to the destination.
+  - sm_assignment: The state machine of the system which control what the robot does.
   
 For the State Machine Diagram:
 ![] (https://github.com/angux94/Exp_rob_lab_ass1/blob/main/State_Machine_diagram.png)
 
 The State Machine has 3 states:
-  NORMAL: Main state in which the robot walks randomly until the "play" command arrives and goes to PLAY state, if not, goes to SLEEP state.
-  SLEEP: The robot goes to the sleep position and rests for a while, afterwars wakes up and goes to the NORMAL state.
-  PLAY: The robot plays for a number of times, going back and forth between the man and the specified play coordintate. Then goes to NORMAL state.
+  - NORMAL: Main state in which the robot walks randomly until the "play" command arrives and goes to PLAY state, if not, goes to SLEEP state.
+  - SLEEP: The robot goes to the sleep position and rests for a while, afterwars wakes up and goes to the NORMAL state.
+  - PLAY: The robot plays for a number of times, going back and forth between the man and the specified play coordintate. Then goes to NORMAL state.
   
 Messages
 ----------
 
 The message types used in the project were:
-  geometry_msgs Point: for x,y coordinates of the robot.
-  std_msgs String: for strings.
-  std_msgs Bool: for booleans.
+  - geometry_msgs Point: for x,y coordinates of the robot.
+  - std_msgs String: for strings.
+  - std_msgs Bool: for booleans.
   
 Parameters
 -------------
 
 The parameter are to be specified just on the sm_assignment file:
-  man_x: Man x coordinate (between 0-1000) (Default 400)
-  man_y: Man y coordinate (between 0-1000) (Default 600)
-  play_times: amount of times the robot is going to play (between 1-5) (Default random)
+  - man_x: Man x coordinate (between 0-1000) (Default 400)
+  - man_y: Man y coordinate (between 0-1000) (Default 600)
+  - play_times: amount of times the robot is going to play (between 1-5) (Default random)
   
-  sleep_x: Bed x coordinate (between 0-1000) (Default 100)
-  sleep_y: Bed y coordinate (between 0-1000) (Default 900)
-  time_sleep: Time the robot sleeps (between 1-10) (Default random)
+  - sleep_x: Bed x coordinate (between 0-1000) (Default 100)
+  - sleep_y: Bed y coordinate (between 0-1000) (Default 900)
+  - time_sleep: Time the robot sleeps (between 1-10) (Default random)
   
 Packages and File list
 ------------
@@ -68,15 +68,18 @@ By downloading the provided ROS package, you can run each of the nodes on 4 term
 
   Will run the code and waits for a valid command.
 
+
 -For the gesture_recog node:
   rosrun exp_rob_lab_ass1 geture_recog.py
   
   Will wait to display the grid when the command is entered.
 
+
 -For the movement_control node:
   rosrun exp_rob_lab_ass1 movement_control.py
   
   Will wait to receive a coordinate and tell when it arrives and to which corrdinates.
+  
   
 -For the sm_assignment node:
   rosrun exp_rob_lab_ass1 sm_assignment.py
