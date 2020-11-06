@@ -12,7 +12,7 @@ Software Architecture and States Diagrams
 ----------------------------------------
 
 For the software architecture:
-![] (https://github.com/angux94/Exp_rob_lab_ass1/blob/main/Architecture_ass1.png)
+![](https://github.com/angux94/Exp_rob_lab_ass1/blob/main/Architecture_ass1.png)
 
 As seen on the image, the architecture of the program has 4 nodes.
   - command_recog: Waits for the user to input the "play" command.
@@ -21,7 +21,7 @@ As seen on the image, the architecture of the program has 4 nodes.
   - sm_assignment: The state machine of the system which control what the robot does.
   
 For the State Machine Diagram:
-![] (https://github.com/angux94/Exp_rob_lab_ass1/blob/main/State_Machine_diagram.png)
+![](https://github.com/angux94/Exp_rob_lab_ass1/blob/main/State_Machine_diagram.png)
 
 The State Machine has 3 states:
   - NORMAL: Main state in which the robot walks randomly until the "play" command arrives and goes to PLAY state, if not, goes to SLEEP state.
